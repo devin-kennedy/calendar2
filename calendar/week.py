@@ -22,6 +22,9 @@ class Week:
             else:
                 yield day
 
+    def __len__(self):
+        return len(self.days)
+
     def __getitem__(self, item):
         return self.days[item]
 

@@ -1,10 +1,10 @@
+import calendar
 from calendar import Day, Week, Month, Year
 
 
 def main():
-    year = Year(2016)
-    month = year[3]
-    print(month)
+    day, month, year = calendar.parseDate("4-5-2007")
+    print(year)
 
 
 if __name__ == "__main__":

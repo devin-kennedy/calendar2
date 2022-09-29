@@ -14,7 +14,7 @@ class Month:
         self.__generate()
 
     def __generate(self):
-        startDay = utils.getStartingDay(self.year, self.code)
+        startDay = utils.getDayWeek(self.year, self.code)
         self.weeks.append(Week([Day(0) for _ in range(startDay)]))
         daysUsed = 0
         for i in range(1, (7-startDay)+1):
@@ -33,7 +33,13 @@ class Month:
     def __str__(self):
         abbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         marray = self.toArray()
-        return "".join([" " for _ in range(26)]) + self.name + "\n" + str(tabulate(marray, headers=abbreviations, tablefmt="fancy_grid"))
+        return ("".join(
+            [" " for _ in range(26)]
+        ) +
+                self.name +
+                "\n" +
+                str(tabulate(marray, headers=abbreviations, tablefmt="fancy_grid"))
+        )
 
     def __repr__(self):
         return f"Month object: {self.name} of year {self.year}"
@@ -49,4 +55,4 @@ class Month:
             return self.weeks[item0]
 
     def toArray(self):
-        return np.array([[int(str(day).strip()) if day else None for day in week] for week in self])
+        return np.array([[int(str(day).strip()) if day else None for day in week] for week in self], dtype=object)

@@ -17,6 +17,9 @@ class Day:
                 return f"{self.date} "
             return f" {self.date} "
 
+    def __int__(self):
+        return int(self.date)
+
     def __repr__(self):
         if not self.isEmpty:
             return f"Date object: {self.name} the {self.date}"
