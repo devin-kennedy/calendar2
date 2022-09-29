@@ -1,6 +1,7 @@
 from calendar import Week, Day, utils
 import math
 import numpy as np
+from tabulate import tabulate
 
 
 class Month:
@@ -31,7 +32,8 @@ class Month:
 
     def __str__(self):
         abbreviations = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        return "        " + self.name + "\n" + " ".join(abbreviations) + "\n" + "\n".join(str(week) for week in self.weeks)
+        marray = self.toArray()
+        return "".join([" " for _ in range(26)]) + self.name + "\n" + str(tabulate(marray, headers=abbreviations, tablefmt="fancy_grid"))
 
     def __repr__(self):
         return f"Month object: {self.name} of year {self.year}"
