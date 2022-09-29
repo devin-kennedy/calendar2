@@ -2,7 +2,7 @@ from calendar import Day, Week, Month, Year
 
 
 def main():
-    year = Year(2022)
+    year = Year(2016)
     print(year)
 
 

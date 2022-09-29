@@ -15,6 +15,16 @@ class Week:
     def __repr__(self):
         return f"Week object of length {len(self.days)}"
 
+    def __iter__(self):
+        for day in self.days:
+            if str(day).strip() == "":
+                yield None
+            else:
+                yield day
+
+    def __getitem__(self, item):
+        return self.days[item]
+
     def append(self, day: Day):
         if self.numDays >= 7:
             raise ValueError("Weeks can be no longer than 7 days")

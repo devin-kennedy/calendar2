@@ -1,5 +1,6 @@
 from calendar import Week, Day, utils
 import math
+import numpy as np
 
 
 class Month:
@@ -34,3 +35,16 @@ class Month:
 
     def __repr__(self):
         return f"Month object: {self.name} of year {self.year}"
+
+    def __iter__(self):
+        for week in self.weeks:
+            yield week
+
+    def __getitem__(self, item0, item1=None):
+        if item1:
+            return self.weeks[item0][item1]
+        else:
+            return self.weeks[item0]
+
+    def toArray(self):
+        return np.array([[int(str(day).strip()) if day else None for day in week] for week in self])

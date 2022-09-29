@@ -20,3 +20,10 @@ class Year:
 
     def __repr__(self):
         return f"Year object of the year {self.year}"
+
+    def __iter__(self):
+        for month in self.months:
+            yield month
+
+    def __getitem__(self, item):
+        return self.months[item]
